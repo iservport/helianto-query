@@ -1,4 +1,4 @@
-package org.helianto.core.data;
+package org.helianto.query.data;
 
 import java.io.Serializable;
 

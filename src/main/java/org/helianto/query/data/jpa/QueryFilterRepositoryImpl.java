@@ -1,11 +1,11 @@
-package org.helianto.core.data.jpa;
+package org.helianto.query.data.jpa;
 
 import java.io.Serializable;
 
 import javax.persistence.EntityManager;
 
-import org.helianto.core.data.QueryRepository;
 import org.helianto.query.QueryBuilder;
+import org.helianto.query.data.QueryRepository;
 import org.helianto.query.jpa.AbstractQueryBuilder;
 import org.helianto.query.jpa.JPAQueryCountBuilderDecorator;
 import org.hibernate.Session;
