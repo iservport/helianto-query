@@ -20,7 +20,8 @@ public class FilterTests {
 	@Test
 	public void empty() {
 		filter.filter(map, query);
-		assertEquals("select alias from TestingDomainObject ", query.build());
+		assertEquals("select alias from TestingDomainObject "
+				, query.build());
 	}
 	
 	@Test
@@ -29,7 +30,8 @@ public class FilterTests {
 		map.put("fieldOneId", 2);
 		map.put("fieldTwo", 'X');
 		filter.filter(map, query);
-		assertEquals("select alias from TestingDomainObject where alias.entity.id = 1", query.build());
+		assertEquals("select alias from TestingDomainObject where alias.fieldOne.id = 2 AND alias.fieldTwo = 'X'"
+				, query.build());
 	}
 	
 	//
