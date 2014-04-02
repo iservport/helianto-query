@@ -1,4 +1,4 @@
-package org.helianto.filter;
+package org.helianto.query.filter;
 
 import java.util.Map;
 

@@ -1,9 +1,10 @@
-package org.helianto.filter;
+package org.helianto.query.filter;
 
 import java.util.Map;
 
 import org.helianto.query.QueryBuilder;
 import org.helianto.query.TestingDomainObject;
+import org.helianto.query.filter.MapFilter;
 
 /**
  * Testing stub.

@@ -1,4 +1,4 @@
-package org.helianto.filter;
+package org.helianto.query.filter;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.helianto.query.QueryBuilder;
 import org.helianto.query.TestingDomainObject;
+import org.helianto.query.filter.MapFilter;
 import org.helianto.query.jpa.JPAQueryBuilder;
 import org.junit.Before;
 import org.junit.Test;
