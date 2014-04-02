@@ -19,8 +19,7 @@ public abstract class AbstractQueryBuilder
 	private String alias = "alias";
 	private boolean suppressNextConnector = false;
 	private String[] orderList = new String[0];
-	
-	protected final StringBuilder internalBuilder;
+	private final StringBuilder internalBuilder;
 	
 	/**
 	 * Default constructor.
@@ -52,6 +51,13 @@ public abstract class AbstractQueryBuilder
 	}
 	
 	/**
+	 * The internal builder.
+	 */
+	protected StringBuilder getInternalBuilder() {
+		return internalBuilder;
+	}
+	
+	/**
 	 * Order list.
 	 * 
 	 * @return
@@ -76,7 +82,7 @@ public abstract class AbstractQueryBuilder
 	protected abstract StringBuilder orderBy();
 	
 	public QueryBuilder append(String token) {
-		internalBuilder.append(token);
+		getInternalBuilder().append(token);
 		return this;
 	}
 
@@ -144,7 +150,7 @@ public abstract class AbstractQueryBuilder
 	 */
 	protected QueryBuilder connect(String connector, boolean force) {
 		if (force) {
-			internalBuilder.append(" ").append(connector).append(" ");
+			getInternalBuilder().append(" ").append(connector).append(" ");
 		}
 		return this;
 	}
@@ -153,14 +159,14 @@ public abstract class AbstractQueryBuilder
 	 * True if not the first criterion.
 	 */
 	protected boolean requiresConnector() {
-		return internalBuilder.length()>0;
+		return getInternalBuilder().length()>0;
 	}
 	
 	public String build() {
 		StringBuilder builder = select();
 		builder.append(from());
-		if (internalBuilder.length()>0) {
-			builder.append("where ").append(internalBuilder);
+		if (getInternalBuilder().length()>0) {
+			builder.append("where ").append(getInternalBuilder());
 		}
 		if (getOrderList().length>0) {
 			builder.append("order by ");

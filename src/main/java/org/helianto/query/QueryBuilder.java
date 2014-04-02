@@ -13,6 +13,11 @@ public interface QueryBuilder {
 	String build();
 	
 	/**
+	 * The alias used in query.
+	 */
+	String getAlias();
+	
+	/**
 	 * Generic appender.
 	 * 
 	 * @param token
