@@ -13,6 +13,14 @@ import org.junit.Test;
 public class JPAQueryBuilderTests {
 
 	@Test
+	public void buildSelect() {
+		query = new JPAQueryBuilder(TestingDomainObject.class, "field1", "field2");
+		query.eq("FIELD", "1");
+		assertEquals("select alias.field1, alias.field2 from TestingDomainObject where alias.FIELD = '1'"
+				, query.build());
+	}
+	
+	@Test
 	public void buildOneField() {
 		query.eq("FIELD", "1");
 		assertEquals("select alias from TestingDomainObject where alias.FIELD = '1'"
@@ -81,7 +89,7 @@ public class JPAQueryBuilderTests {
 	
 	@Before
 	public void setUp() {
-		query = new JPAQueryBuilder(TestingDomainObject.class, "alias");
+		query = new JPAQueryBuilder(TestingDomainObject.class);
 	}
 
 }

@@ -11,29 +11,60 @@ public class JPAQueryBuilder
 	extends AbstractQueryBuilder
 {
 	
+	private String[] fields = new String[0];
+	
 	/**
 	 * Required constructor.
 	 * 
 	 * @param clazz
 	 */
 	public JPAQueryBuilder(Class<?> clazz) {
-		this(clazz, "alias");
+		super(clazz);
 	}
 	
 	/**
-	 * Alias constructor.
+	 * Selectable fields constructor.
+	 * 
+	 * <p>
+	 * If any field is supplied, the select clause will include only them.
+	 * </p>
 	 * 
 	 * @param clazz
-	 * @param alias
+	 * @param fields
 	 */
-	public JPAQueryBuilder(Class<?> clazz, String alias) {
-		super(clazz);
-		setAlias(alias);
+	public JPAQueryBuilder(Class<?> clazz, String... fields) {
+		this(clazz);
+		setFields(fields);
 	}
 	
+	/**
+	 * Selectable fields property.
+	 */
+	public String[] getFields() {
+		return fields;
+	}
+	public void setFields(String[] fields) {
+		this.fields = fields;
+	}
+	
+	/**
+	 * This implementation reacts to the fields array content. If the array is empty, all fields are
+	 * selected. Otherwise, only the fields indicated by the array are selected.
+	 */
 	protected StringBuilder select() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("select ").append(getAlias()).append(" ");
+		builder.append("select ");
+		if (getFields().length>0) {
+			String separator = "";
+			for (String field: getFields()) {
+				builder.append(separator).append(getAlias()).append(".").append(field);
+				separator = ", ";
+			}
+		}
+		else {
+			builder.append(getAlias());
+		}
+		builder.append(" ");
 		return builder;
 	}
 	
