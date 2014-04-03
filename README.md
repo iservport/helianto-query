@@ -1,9 +1,8 @@
 helianto-query
 ==============
 
-Helianto query project
-
-Helianto query builder provides an alternative to type-safe query languages.
+Helianto query builder provides an alternative to type-safe query languages. It can be used independently or with the 
+Spring Data JPA project if you add the ```HeliantoQueryConfig``` to your Spring configuration.
 
 Examples:
 
@@ -62,6 +61,47 @@ public class EntityFilter
 
 ```
 
+## Binaries
+
+You need to add this to your Maven pom, under the dependencies tag:
+
+```xml
+<dependency>
+    <groupId>org.helianto</groupId>
+    <artifactId>helianto-query</artifactId>
+    <version>x.y.z</version>
+</dependency>
+```
+and to the repositories tag:
+
+```xml
+<repositories>
+	<repository>
+		<id>org.helianto.repository.devel</id>
+		<name>Helianto Library Releases</name>
+		<url>http://www.helianto.org/public_html/repository</url>
+	</repository> 
+	<repository>
+		<id>org.helianto.repository.snapshot</id>
+		<name>Helianto Snapshot Releases</name>
+		<url>http://www.helianto.org/public_html/snapshot</url>
+	</repository>
+</repositories>	
+```
+
+## Build
+
+To build:
+
+```
+$ git clone git@github.com:iservport/helianto-query.git
+$ cd helianto-query/
+$ mvn clean install
+```
+
+It will compile and install helianto-query in your local repository.
+
+You need Java 7 or later.
 
 ## Bugs and Feedback
 
