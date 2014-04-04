@@ -21,7 +21,7 @@ public class FilterTests {
 	@Test
 	public void empty() {
 		filter.filter(map, query);
-		assertEquals("select alias from TestingDomainObject "
+		assertEquals("select alias from TestingDomainObject alias "
 				, query.build());
 	}
 	
@@ -31,7 +31,7 @@ public class FilterTests {
 		map.put("fieldOneId", 2);
 		map.put("fieldTwo", 'X');
 		filter.filter(map, query);
-		assertEquals("select alias from TestingDomainObject where alias.fieldOne.id = 2 AND alias.fieldTwo = 'X'"
+		assertEquals("select alias from TestingDomainObject alias where alias.fieldOne.id = 2 AND alias.fieldTwo = 'X'"
 				, query.build());
 	}
 	

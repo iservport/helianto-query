@@ -17,7 +17,7 @@ public class JPAQueryCountBuilderDecoratorTests {
 		JPAQueryBuilder query = new JPAQueryBuilder(TestingDomainObject.class);
 		QueryBuilder decoratedQuery = new JPAQueryCountBuilderDecorator(query);
 		query.eq("FIELD", "1");
-		assertEquals("select count(alias.id) from TestingDomainObject where alias.FIELD = '1'"
+		assertEquals("select count(alias.id) from TestingDomainObject alias where alias.FIELD = '1'"
 				, decoratedQuery.build());
 	}
 

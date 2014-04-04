@@ -70,7 +70,8 @@ public class JPAQueryBuilder
 	
 	protected StringBuilder from() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("from ").append(getClazz().getSimpleName()).append(" ");
+		builder.append("from ").append(getClazz().getSimpleName())
+			.append(" ").append(getAlias()).append(" ");
 		return builder;
 	}
 	
