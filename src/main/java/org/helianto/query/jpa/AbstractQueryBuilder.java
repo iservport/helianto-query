@@ -19,6 +19,7 @@ public abstract class AbstractQueryBuilder
 	private String alias = "alias";
 	private boolean suppressNextConnector = false;
 	private String[] orderList = new String[0];
+	private int limit = 0;
 	private final StringBuilder internalBuilder;
 	
 	/**
@@ -59,11 +60,16 @@ public abstract class AbstractQueryBuilder
 	
 	/**
 	 * Order list.
-	 * 
-	 * @return
 	 */
 	public String[] getOrderList() {
 		return orderList;
+	}
+	
+	/**
+	 * Limit.
+	 */
+	public int getLimit() {
+		return limit;
 	}
 	
 	/**
@@ -116,6 +122,11 @@ public abstract class AbstractQueryBuilder
 		this.orderList = orderList;
 		return this;
 	}
+	
+	public QueryBuilder appendLimit(int limit) {
+		this.limit = limit;
+		return this;
+	}	
 		
 	/**
 	 * AND connector.
@@ -175,6 +186,9 @@ public abstract class AbstractQueryBuilder
 				builder.append(separator).append(getAlias()).append(".").append(orderField);
 				separator = ", ";
 			}
+		}
+		if (getLimit()>0) {
+			builder.append("limit ").append(getLimit());
 		}
 		return builder.toString();
 	}

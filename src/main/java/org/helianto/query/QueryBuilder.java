@@ -78,5 +78,15 @@ public interface QueryBuilder {
 	 * NOT appender.
 	 */
 	QueryBuilder not();
+	
+	/**
+	 * Order appender.
+	 */
+	QueryBuilder appendOrderBy(String... orderList);
+	
+	/**
+	 * Limit appender.
+	 */
+	QueryBuilder appendLimit(int limit);
 
 }
