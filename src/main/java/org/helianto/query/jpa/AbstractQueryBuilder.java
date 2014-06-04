@@ -173,6 +173,10 @@ public abstract class AbstractQueryBuilder
 		return getInternalBuilder().length()>0;
 	}
 	
+	protected boolean isIgnoreLimit() {
+		return false;
+	}
+	
 	public String build() {
 		StringBuilder builder = select();
 		builder.append(from());
@@ -187,7 +191,7 @@ public abstract class AbstractQueryBuilder
 				separator = ", ";
 			}
 		}
-		if (getLimit()>0) {
+		if (getLimit()>0 && !isIgnoreLimit()) {
 			builder.append("limit ").append(getLimit());
 		}
 		return builder.toString();

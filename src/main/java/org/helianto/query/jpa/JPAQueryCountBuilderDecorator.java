@@ -88,5 +88,10 @@ public class JPAQueryCountBuilderDecorator
 	public QueryBuilder not() {
 		return query.not();
 	}
+	
+	@Override
+	protected boolean isIgnoreLimit() {
+		return true;
+	}
 
 }
