@@ -35,11 +35,18 @@ public class QueryFilterRepositoryImpl<T, ID extends Serializable> extends
 
 	public long count(QueryBuilder query) {
 		QueryBuilder decoratedQuery = new JPAQueryCountBuilderDecorator((AbstractQueryBuilder) query);
+		if(!query.isIgnoreLimit() && query.getLimit()>0) {
+			return (Long) entityManager.createQuery(decoratedQuery.build()).setMaxResults(query.getLimit()).getSingleResult();
+		}		
 		return (Long) entityManager.createQuery(decoratedQuery.build()).getSingleResult();
 	}
 	
 	@SuppressWarnings("unchecked")
 	public Iterable<T> find(QueryBuilder query, Pageable pageable) {
+		// TODO consider the Pageable interface too.
+		if(!query.isIgnoreLimit() && query.getLimit()>0) {
+			return entityManager.createQuery(query.build()).setMaxResults(query.getLimit()).getResultList();
+		}		
 		return entityManager.createQuery(query.build()).getResultList();
 	}
 	
