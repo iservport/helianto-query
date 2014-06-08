@@ -90,7 +90,7 @@ public class JPAQueryCountBuilderDecorator
 	}
 	
 	@Override
-	protected boolean isIgnoreLimit() {
+	public boolean isIgnoreLimit() {
 		return true;
 	}
 

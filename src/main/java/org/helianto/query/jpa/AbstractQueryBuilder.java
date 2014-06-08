@@ -71,6 +71,9 @@ public abstract class AbstractQueryBuilder
 	public int getLimit() {
 		return limit;
 	}
+	public void setLimit(int limit) {
+		this.limit = limit;
+	}
 	
 	/**
 	 * Hook for selection clause.
@@ -173,7 +176,7 @@ public abstract class AbstractQueryBuilder
 		return getInternalBuilder().length()>0;
 	}
 	
-	protected boolean isIgnoreLimit() {
+	public boolean isIgnoreLimit() {
 		return false;
 	}
 	
@@ -190,9 +193,6 @@ public abstract class AbstractQueryBuilder
 				builder.append(separator).append(getAlias()).append(".").append(orderField);
 				separator = ", ";
 			}
-		}
-		if (getLimit()>0 && !isIgnoreLimit()) {
-			builder.append("limit ").append(getLimit());
 		}
 		return builder.toString();
 	}

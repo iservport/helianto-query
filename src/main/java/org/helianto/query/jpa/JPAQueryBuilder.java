@@ -106,5 +106,5 @@ public class JPAQueryBuilder
 		appendFieldName(fieldName).append(" like ").append("'%").append(constraint).append("%'");
 		return this;
 	}
-	
+
 }
