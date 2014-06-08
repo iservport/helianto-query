@@ -84,9 +84,22 @@ public interface QueryBuilder {
 	 */
 	QueryBuilder appendOrderBy(String... orderList);
 	
-	/**
-	 * Limit appender.
+ 	/**
+	 * Limit getter.
 	 */
-	QueryBuilder appendLimit(int limit);
+	int getLimit(); 
+
+ 	/**
+	 * Limit setter.
+	 * 
+	 * @param limit
+	 */
+	void setLimit(int limit); 
+	
+	/**
+	 * Limit ignore
+	 * 
+	 */
+	boolean isIgnoreLimit();
 
 }
