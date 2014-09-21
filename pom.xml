@@ -9,7 +9,7 @@
 	<artifactId>helianto-query</artifactId>
 	<packaging>jar</packaging>
 	<name>The Helianto Query Project ${project.version}</name>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<description>
 		Helianto query project.
 	</description>
@@ -44,7 +44,7 @@
 		<maven.test.failure.ignore>false</maven.test.failure.ignore>
 		<spring.framework.version>4.0.4.RELEASE</spring.framework.version>
 		<org.aspectj.version>1.6.11</org.aspectj.version>
-		<spring.data.version>1.5.2.RELEASE</spring.data.version>
+		<spring.data.version>1.7.0.RELEASE</spring.data.version>
 		<org.slf4j.version>1.7.5</org.slf4j.version>
 	</properties>
 	
